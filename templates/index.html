@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth Example</title>
+</head>
+<body>
+    <h1>Welcome to OAuth Example</h1>
+    {% if user %}
+        <h2>User Information</h2>
+        <p><strong>Name:</strong> {{ user.name or user.screen_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Picture:</strong> <img src="{{ user.picture or user.profile_image_url }}" alt="User Image"></p>
+    {% else %}
+        <p>Please log in using one of the following methods:</p>
+        <a href="{{ url_for('google') }}">Login with Google</a><br>
+        <a href="{{ url_for('twitter') }}">Login with Twitter</a><br>
+        <a href="{{ url_for('facebook') }}">Login with Facebook</a>
+    {% endif %}
+</body>
+</html>
